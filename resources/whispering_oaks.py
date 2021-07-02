@@ -16,10 +16,9 @@ def get_all_visitors():
 
         for visitor in db_whispering_oaks:
             visitors.append(model_to_dict(visitor))
-        
+
         print(visitors)
         return jsonify(data=visitors, status={'code': 200, 'message': 'Success'})
-    
+
     except models.DoesNotExist:
         return jsonify(data={}, status={'code': 401, 'message': 'Error getting the resource'})
-

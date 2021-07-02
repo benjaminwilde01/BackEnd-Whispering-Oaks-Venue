@@ -1,6 +1,7 @@
+import os
 from flask import Flask, jsonify, g
 from flask_cors import CORS
-from peewee import Ordering
+
 
 import models
 from resources.whispering_oaks import visitor
@@ -26,7 +27,7 @@ def after_request(response):
     return(response)
 
 
-@app.route('/') 
+@app.route('/')
 def index():
     return 'Hello from Flask'
 
@@ -34,6 +35,9 @@ def index():
 CORS(visitor, origins=['http://localhost:3000'], supports_credentials=True)
 app.register_blueprint(visitor, url_prefix='/api/v1/whispering_oaks')
 
+if 'ON_HEROKU' in os.environ:
+    print('\non heroku!')
+    models.initialize()
 
 if __name__ == '__main__':
     models.initialize()
