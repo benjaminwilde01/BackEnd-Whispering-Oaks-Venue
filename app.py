@@ -1,4 +1,5 @@
 import os
+
 from flask import Flask, jsonify, g
 from flask_cors import CORS
 
@@ -7,7 +8,7 @@ import models
 from resources.whispering_oaks import visitor
 
 DEBUG = True
-PORT = 5000
+# PORT = 5000
 
 print(__name__)
 app = Flask(__name__)
@@ -42,4 +43,6 @@ if 'ON_HEROKU' in os.environ:
 
 if __name__ == '__main__':
     models.initialize()
-    app.run(debug=DEBUG, port=PORT)
+    PORT = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=PORT)
+    # app.run(debug=DEBUG, PORT=PORT)
