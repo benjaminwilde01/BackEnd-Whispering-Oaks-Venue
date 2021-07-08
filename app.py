@@ -32,7 +32,7 @@ def index():
     return 'Hello from Flask'
 
 
-CORS(visitor, origins=['http://localhost:3000', 'https://front-end-whispering-oaks.herokuapp.com'],
+CORS(visitor, origins=['http://localhost:3000', 'https://front-end-whispering-oaks.herokuapp.com', 'https://front-end-whispering-oaks.herokuapp.com/'],
      supports_credentials=True)
 app.register_blueprint(visitor, url_prefix='/api/v1/whispering_oaks')
 
