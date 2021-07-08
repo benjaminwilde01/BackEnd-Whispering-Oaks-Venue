@@ -32,7 +32,8 @@ def index():
     return 'Hello from Flask'
 
 
-CORS(visitor, origins=['http://localhost:3000'], supports_credentials=True)
+CORS(visitor, origins=['http://localhost:3000', 'https://front-end-whispering-oaks.herokuapp.com/contact'],
+     supports_credentials=True)
 app.register_blueprint(visitor, url_prefix='/api/v1/whispering_oaks')
 
 if 'ON_HEROKU' in os.environ:
