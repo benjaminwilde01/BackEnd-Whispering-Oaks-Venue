@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date, datetime
 import os
 from peewee import *
 from playhouse.db_url import connect
@@ -15,6 +15,7 @@ class Visitor(Model):
     name = CharField()
     number = IntegerField()
     email = CharField()
+    date = DateField()
     message = TextField()
     created_at = DateTimeField(default=datetime.now)
 

@@ -32,7 +32,7 @@ def create_visitor():
 
     try:
         visitor = models.Visitor.create(
-            name=payload['name'], number=payload['number'], email=payload['email'], message=payload['message'])
+            name=payload['name'], number=payload['number'], email=payload['email'], date=payload['date'], message=payload['message'])
 
         print(visitor)
         print(dir(visitor))
