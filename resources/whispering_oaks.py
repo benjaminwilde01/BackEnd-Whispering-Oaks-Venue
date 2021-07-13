@@ -15,7 +15,6 @@ def get_all_visitors():
         for visitor in db_whispering_oaks:
             visitors.append(model_to_dict(visitor))
 
-        print(visitors)
         return jsonify(data=visitors, status={'code': 200, 'message': 'Success'})
 
     except models.DoesNotExist:
@@ -24,18 +23,11 @@ def get_all_visitors():
 
 @visitor.route('/', methods=['POST'])
 def create_visitor():
-    # print(f'current_user is {current_user} ')
-
     payload = request.get_json()
-    print(payload)
-    # print(current_user)
 
     try:
         visitor = models.Visitor.create(
             name=payload['name'], number=payload['number'], email=payload['email'], date=payload['date'], message=payload['message'])
-
-        print(visitor)
-        print(dir(visitor))
 
         return jsonify(data=model_to_dict(visitor), status={'code': 201, 'message': 'Success'})
 
